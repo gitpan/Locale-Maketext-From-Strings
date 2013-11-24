@@ -1,0 +1,26 @@
+---
+abstract: 'Parse Apple .strings files'
+author:
+  - 'Jan Henning Thorsen <jhthorsen@cpan.org>'
+build_requires:
+  Test::More: 0.90
+configure_requires:
+  ExtUtils::MakeMaker: 0
+dynamic_config: 1
+generated_by: 'ExtUtils::MakeMaker version 6.66, CPAN::Meta::Converter version 2.132830'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Locale-Maketext-From-Strings
+no_index:
+  directory:
+    - t
+    - inc
+requires: {}
+resources:
+  bugtracker: https://github.com/jhthorsen/locale-maketext-from-strings/issues
+  homepage: https://metacpan.org/release/Locale-Maketext-From-Strings
+  license: http://dev.perl.org/licenses/
+  repository: https://github.com/jhthorsen/locale-maketext-from-strings.git
+version: 0.01
