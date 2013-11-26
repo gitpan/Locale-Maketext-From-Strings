@@ -6,7 +6,7 @@ Locale::Maketext::From::Strings - Parse Apple .strings files
 
 =head1 VERSION
 
-0.01
+0.0101
 
 =head1 SYNOPSIS
 
@@ -25,6 +25,8 @@ Locale::Maketext::From::Strings - Parse Apple .strings files
 
 This module will parse C<.strings> file used in the Apple world and generate
 in memory perl-packages used by the L<Locale::Maketext> module.
+
+=head2 Formatting rules
 
 This module can parse most of the formatting mentioned here:
 L<http://blog.lingohub.com/developers/2013/03/i18n-resource-file-formats-ios-strings-files/>.
@@ -68,6 +70,26 @@ if you want to be sure about the value.
 
 =back
 
+=head2 Example file
+
+This could be the content of "i18n/en.strings":
+
+  /* comments in .strings files
+  can be multi line,
+  single line */
+  // or combination of the two
+  "hello_user" = "Hello %1$s";
+
+  "Sample data" = "sample %s %d %.3f data";
+
+  // keys and values can be spread to multiple lines
+  "welcome_message" = "Welcome back,
+  we have missed you";
+
+TIP! Adding the default value on the left side (instead of hello_user and
+welcome_message) works better with L<Locale::Maketext> since it will use that
+as fallback if translation is missing.
+
 =cut
 
 use strict;
@@ -76,7 +98,7 @@ use File::Spec::Functions qw( catfile splitdir );
 use Data::Dumper ();
 use constant DEBUG => $ENV{MAKETEXT_FROM_STRINGS_DEBUG} ? 1 : 0;
 
-our $VERSION = '0.01';
+our $VERSION = '0.0101';
 
 =head1 ATTRIBUTES
 
@@ -354,7 +376,7 @@ use base '$namespace';
 sub _spurt {
   my($content, $path) = @_;
   die qq{Can't open file "$path": $!} unless open my $FH, '>', $path;
-  die qq{Can't write to file "$path": $!} unless defined $FH->syswrite($content);
+  die qq{Can't write to file "$path": $!} unless defined syswrite $FH, $content;
 }
 
 =head1 COPYRIGHT

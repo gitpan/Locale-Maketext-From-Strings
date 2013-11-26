@@ -23,4 +23,4 @@ resources:
   homepage: https://metacpan.org/release/Locale-Maketext-From-Strings
   license: http://dev.perl.org/licenses/
   repository: https://github.com/jhthorsen/locale-maketext-from-strings.git
-version: 0.01
+version: 0.0101
